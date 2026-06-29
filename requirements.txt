@@ -1,0 +1,27 @@
+# Core ML
+lightgbm==4.3.0
+xgboost==2.0.3
+scikit-learn==1.4.2
+numpy==1.26.4
+pandas==2.2.2
+
+# Retrieval
+rank-bm25==0.2.2
+sentence-transformers==2.7.0
+
+# API
+fastapi==0.111.0
+uvicorn==0.29.0
+pydantic==2.7.1
+
+# Experiment tracking
+mlflow==2.12.2
+
+# Dataset
+datasets==2.19.1
+ir-datasets==0.5.7
+
+# Dev / testing
+pytest==8.2.0
+httpx==0.27.0
+python-dotenv==1.0.1
