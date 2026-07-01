@@ -354,5 +354,5 @@ if __name__ == "__main__":
     irrel = q1[q1["label"] == 0]
     print(f"Avg click_rate (relevant):   {rel['click_rate'].mean():.3f}")
     print(f"Avg click_rate (irrelevant): {irrel['click_rate'].mean():.3f}")
-    assert rel["click_rate"].mean() > irrel["click_rate"].mean(), "Relevant docs shoud've higher CTR!"
+    assert rel["click_rate"].mean() > irrel["click_rate"].mean(), "Relevant docs shud've higher CTR!"
     print("Assertion passed: relevant docs have higher click_rate.")

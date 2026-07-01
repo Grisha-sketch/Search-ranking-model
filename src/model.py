@@ -78,7 +78,7 @@ def build_group_array(df: pd.DataFrame, qid_col: str = "qid") -> list[int]:
     """
     Build the group array required by LightGBM for listwise ranking.
 
-       
+
     LightGBM needs to know how many rows belong to each query so it
     can compute the lambda gradients within each query group.
 

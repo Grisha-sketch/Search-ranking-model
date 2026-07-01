@@ -166,4 +166,3 @@ class TestCompareRankings:
         assert "baseline (BM25)" in result.columns
         assert "model (LTR)" in result.columns
         assert "delta" in result.columns
-        
