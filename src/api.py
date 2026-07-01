@@ -25,7 +25,7 @@ Example request:
       -d '{
         "query": "what is machine learning",
         "candidates": [
-          {"pid": "p1", "text": "Machine learning is a method of data analysis.", 
+          {"pid": "p1", "text": "Machine learning is a method of data analysis.",
           "bm25_score": 4.2},
           {"pid": "p2", "text": "The weather is sunny today.", "bm25_score": 0.3}
         ]
@@ -57,6 +57,7 @@ USE_EMBEDDINGS = os.getenv("USE_EMBEDDINGS", "false").lower() == "true"
 SIM_SESSIONS = int(os.getenv("SIM_SESSIONS", "50"))   # user signal sim sessions
 
 # App state
+
 
 class AppState:
     ranker: Optional[LambdaMARTRanker] = None
