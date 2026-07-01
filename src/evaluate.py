@@ -193,4 +193,3 @@ if __name__ == "__main__":
     # Worst ranking: relevant docs last
     worst = [0, 0, 0, 1, 1]
     print(f"Worst   NDCG@5: {ndcg_at_k(worst, 5):.4f}")
-    
