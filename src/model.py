@@ -24,13 +24,11 @@ from __future__ import annotations
 
 import argparse
 import logging
-import os
 from pathlib import Path
 from typing import Optional
 
 import lightgbm as lgb
 import mlflow
-import mlflow.lightgbm
 import numpy as np
 import pandas as pd
 
@@ -56,8 +54,8 @@ FEATURE_IMPORTANCE_PATH = MODEL_DIR / "feature_importance.csv"
 DEFAULT_PARAMS: dict = {
     "objective": "lambdarank",
     "metric": "ndcg",
-    "ndcg_eval_at": [1, 5, 10],       # evaluate NDCG at these cutoffs
-    "lambdarank_truncation_level": 10, # only top-10 positions affect gradients
+    "ndcg_eval_at": [1, 5, 10],         # evaluate NDCG at these cutoffs
+    "lambdarank_truncation_level": 10,  # only top-10 positions affect gradients
     "learning_rate": 0.05,
     "num_leaves": 31,                  # max leaves per tree — controls complexity
     "min_data_in_leaf": 5,             # prevents overfitting on small groups
@@ -79,6 +77,7 @@ def build_group_array(df: pd.DataFrame, qid_col: str = "qid") -> list[int]:
     """
     Build the group array required by LightGBM for listwise ranking.
 
+    
     LightGBM needs to know how many rows belong to each query so it
     can compute the lambda gradients within each query group.
 
@@ -448,3 +447,4 @@ if __name__ == "__main__":
         ranker, metrics = train_with_mlflow(df)
 
         logger.info("Final eval metrics: %s", metrics)
+        

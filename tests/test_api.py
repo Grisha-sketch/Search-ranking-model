@@ -202,3 +202,4 @@ class TestRankValidation:
             "candidates": [{"pid": "p1", "text": "some text"}],
         }).json()
         assert data["results"][0]["bm25_score"] == 0.0
+        

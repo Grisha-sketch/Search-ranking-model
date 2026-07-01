@@ -25,7 +25,8 @@ Example request:
       -d '{
         "query": "what is machine learning",
         "candidates": [
-          {"pid": "p1", "text": "Machine learning is a method of data analysis.", "bm25_score": 4.2},
+          {"pid": "p1", "text": "Machine learning is a method of data analysis.", 
+          "bm25_score": 4.2},
           {"pid": "p2", "text": "The weather is sunny today.", "bm25_score": 0.3}
         ]
       }'
@@ -37,10 +38,8 @@ import logging
 import os
 import time
 from contextlib import asynccontextmanager
-from pathlib import Path
 from typing import Optional
 
-import numpy as np
 import pandas as pd
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
@@ -52,16 +51,12 @@ from src.user_signals import USER_SIGNAL_COLS, SimulationConfig, add_user_signal
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 
-# ---------------------------------------------------------------------------
 # Config
-# ---------------------------------------------------------------------------
 
 USE_EMBEDDINGS = os.getenv("USE_EMBEDDINGS", "false").lower() == "true"
 SIM_SESSIONS = int(os.getenv("SIM_SESSIONS", "50"))   # user signal sim sessions
 
-# ---------------------------------------------------------------------------
 # App state
-# ---------------------------------------------------------------------------
 
 class AppState:
     ranker: Optional[LambdaMARTRanker] = None
@@ -98,9 +93,8 @@ app = FastAPI(
 )
 
 
-# ---------------------------------------------------------------------------
 # Schemas
-# ---------------------------------------------------------------------------
+
 
 class Candidate(BaseModel):
     pid: str = Field(..., description="Passage ID")
@@ -152,9 +146,8 @@ class ModelInfoResponse(BaseModel):
     sim_sessions: int
 
 
-# ---------------------------------------------------------------------------
 # Helper: build DataFrame for a single request
-# ---------------------------------------------------------------------------
+
 
 def _build_request_df(query: str, candidates: list[Candidate]) -> pd.DataFrame:
     """Convert a RankRequest into the DataFrame format expected by the pipeline."""
@@ -186,9 +179,7 @@ def _bm25_fallback(candidates: list[Candidate]) -> list[RankedResult]:
     ]
 
 
-# ---------------------------------------------------------------------------
 # Endpoints
-# ---------------------------------------------------------------------------
 
 @app.get("/health", response_model=HealthResponse, tags=["ops"])
 def health() -> HealthResponse:

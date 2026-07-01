@@ -14,8 +14,7 @@ Flow:
 from __future__ import annotations
 
 import logging
-from dataclasses import dataclass, field
-from typing import Optional
+from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
@@ -221,3 +220,4 @@ if __name__ == "__main__":
     )
     print(df.head())
     print(f"\nLabel distribution:\n{df['label'].value_counts()}")
+    

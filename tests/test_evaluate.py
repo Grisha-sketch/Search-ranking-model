@@ -29,7 +29,6 @@ class TestDCG:
 
     def test_relevant_at_position2(self):
         """Relevant doc at position 2 gets log2(3) discount."""
-        expected = (2**1 - 1) / (2**1 - 1) * 0  # pos 1 not relevant
         # position 2: gain=1, discount=log2(3)
         dcg = dcg_at_k([0, 1, 0], k=3)
         assert dcg == pytest.approx(1.0 / 1.5849625, rel=1e-4)
@@ -90,7 +89,7 @@ class TestAP:
 
     def test_two_relevant(self):
         # P@1=1/1 (hit), P@3=2/3 (hit) → AP = (1 + 2/3) / 2
-        assert average_precision([1, 0, 1]) == pytest.approx((1.0 + 2/3) / 2, rel=1e-4)
+        assert average_precision([1, 0, 1]) == pytest.approx( (1.0 + 2 / 3) / 2, rel=1e-4)
 
 
 # ---------------------------------------------------------------------------
@@ -109,7 +108,7 @@ class TestMRR:
 
     def test_takes_first_relevant(self):
         """MRR uses only the first relevant hit."""
-        assert reciprocal_rank([0, 0, 1, 1]) == pytest.approx(1/3, rel=1e-4)
+        assert reciprocal_rank([0, 0, 1, 1]) == pytest.approx(1 / 3, rel=1e-4)
 
 
 # ---------------------------------------------------------------------------
@@ -167,3 +166,4 @@ class TestCompareRankings:
         assert "baseline (BM25)" in result.columns
         assert "model (LTR)" in result.columns
         assert "delta" in result.columns
+        

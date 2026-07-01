@@ -343,7 +343,8 @@ if __name__ == "__main__":
             "qid": "q1",
             "pid": "p1",
             "query_text": "what is machine learning",
-            "passage_text": "Machine learning is a subset of artificial intelligence that enables systems to learn from data.",
+            "passage_text": "Machine learning is a subset of artificial intelligence "
+            "that enables systems to learn from data.",
             "bm25_score": 4.2,
             "label": 1,
         },
@@ -370,3 +371,4 @@ if __name__ == "__main__":
     print("\nFeature columns:")
     print(result[FEATURE_COLS].to_string())
     print(f"\nShape: {result.shape}")
+    

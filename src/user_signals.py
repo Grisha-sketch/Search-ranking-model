@@ -33,7 +33,7 @@ Signal features added to DataFrame:
 from __future__ import annotations
 
 import logging
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
@@ -83,7 +83,7 @@ class SimulationConfig:
     num_sessions: int = 200        # number of search sessions per query
     num_positions: int = 10        # results shown per page
     eta: float = 0.8               # position bias strength
-    base_ctr_relevant: float = 0.6 # P(click | relevant, examined)
+    base_ctr_relevant: float = 0.6   # P(click | relevant, examined)
     base_ctr_irrelevant: float = 0.1  # P(click | not relevant, examined)
     mean_dwell_relevant: float = 45.0  # seconds on page if relevant
     mean_dwell_irrelevant: float = 8.0  # seconds on page if not relevant
@@ -354,5 +354,5 @@ if __name__ == "__main__":
     irrel = q1[q1["label"] == 0]
     print(f"Avg click_rate (relevant):   {rel['click_rate'].mean():.3f}")
     print(f"Avg click_rate (irrelevant): {irrel['click_rate'].mean():.3f}")
-    assert rel["click_rate"].mean() > irrel["click_rate"].mean(), "Relevant docs should have higher CTR!"
+    assert rel["click_rate"].mean() > irrel["click_rate"].mean(),"Relevant docs should have higher CTR!"
     print("Assertion passed: relevant docs have higher click_rate.")
