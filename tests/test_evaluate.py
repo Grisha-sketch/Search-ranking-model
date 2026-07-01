@@ -89,7 +89,7 @@ class TestAP:
 
     def test_two_relevant(self):
         # P@1=1/1 (hit), P@3=2/3 (hit) → AP = (1 + 2/3) / 2
-        assert average_precision([1, 0, 1]) == pytest.approx( (1.0 + 2 / 3) / 2, rel=1e-4)
+        assert average_precision([1, 0, 1]) == pytest.approx((1.0 + 2 / 3) / 2, rel=1e-4)
 
 
 # ---------------------------------------------------------------------------
